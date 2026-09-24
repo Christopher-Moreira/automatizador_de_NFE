@@ -85,6 +85,7 @@ export function loadConfig() {
       to: required("EMAIL_TO"),
       subject: optional("EMAIL_SUBJECT", "Nota Fiscal de Serviço"),
       body: optional("EMAIL_BODY", "Segue em anexo a nota fiscal de serviço."),
+      attachmentName: optional("EMAIL_ATTACHMENT_NAME", "Salario_Christopher_{mes}"),
     },
   };
 

@@ -45,9 +45,10 @@ async function main() {
     now
   );
 
-  // O assunto/corpo do e-mail também aceitam os placeholders de competência.
+  // O assunto/corpo do e-mail e o nome do anexo também aceitam os placeholders.
   const emailSubject = interpolarCompetencia(config.email.subject, now);
   const emailBody = interpolarCompetencia(config.email.body, now);
+  const nomeAnexo = `${interpolarCompetencia(config.email.attachmentName, now)}.pdf`;
 
   console.log(`[${now.toISOString()}] Iniciando emissão ref=${ref} ambiente=${config.focus.ambiente}`);
 
@@ -57,6 +58,7 @@ async function main() {
     console.log(`E-mail SERIA enviado para: ${config.email.to}`);
     console.log(`  assunto: ${emailSubject}`);
     console.log(`  corpo:   ${emailBody}`);
+    console.log(`  anexo:   ${nomeAnexo}`);
     console.log("Nada foi emitido nem enviado.");
     return;
   }
@@ -74,7 +76,7 @@ async function main() {
   console.log(`→ Enviando e-mail para ${config.email.to}...`);
   const messageId = await enviarEmail(config, {
     pdfBuffer,
-    nomeArquivo: `${ref}.pdf`,
+    nomeArquivo: nomeAnexo,
     subject: emailSubject,
     body: emailBody,
   });
