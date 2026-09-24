@@ -1,0 +1,17 @@
+# Segredos — NUNCA commitar
+.env
+.env.*
+!.env.example
+
+# Dependências
+node_modules/
+
+# Logs e artefatos temporários
+*.log
+tmp/
+*.pdf
+
+# SO / editor
+.DS_Store
+.idea/
+.vscode/
