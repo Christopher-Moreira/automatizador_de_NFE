@@ -1,0 +1,18 @@
+{
+  "name": "automatizador-de-nfe",
+  "version": "1.0.0",
+  "description": "Worker que emite uma NFS-e Nacional fixa todo dia 1 e envia por e-mail. Roda sozinho via cron do Railway.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dry-run": "DRY_RUN=true node src/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  },
+  "license": "MIT"
+}
