@@ -27,6 +27,7 @@ export function buildNotaPayload(config) {
       uf: endereco.uf,
       cep: endereco.cep,
     };
+    if (endereco.complemento) tomador.endereco.complemento = endereco.complemento;
   }
 
   const servico = {
@@ -36,6 +37,9 @@ export function buildNotaPayload(config) {
     item_lista_servico: config.servico.item_lista_servico,
     valor_servicos: Number(config.servico.valor_servicos),
   };
+  if (config.servico.codigo_tributacao_nacional) {
+    servico.codigo_tributacao_nacional = config.servico.codigo_tributacao_nacional;
+  }
   if (config.servico.codigo_tributario_municipio) {
     servico.codigo_tributario_municipio = config.servico.codigo_tributario_municipio;
   }

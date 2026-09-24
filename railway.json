@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "node src/index.js",
+    "startCommand": "node --env-file-if-exists=.env src/index.js",
     "cronSchedule": "0 12 1 * *",
     "restartPolicyType": "NEVER"
   }

@@ -1,7 +1,7 @@
 // Envio do e-mail com a nota anexada, via SMTP do seu webmail.
 import nodemailer from "nodemailer";
 
-export async function enviarEmail(config, { pdfBuffer, nomeArquivo }) {
+export async function enviarEmail(config, { pdfBuffer, nomeArquivo, subject, body }) {
   const transporter = nodemailer.createTransport({
     host: config.smtp.host,
     port: config.smtp.port,
@@ -15,8 +15,8 @@ export async function enviarEmail(config, { pdfBuffer, nomeArquivo }) {
   const info = await transporter.sendMail({
     from: config.email.from,
     to: config.email.to,
-    subject: config.email.subject,
-    text: config.email.body,
+    subject: subject ?? config.email.subject,
+    text: body ?? config.email.body,
     attachments: [
       {
         filename: nomeArquivo,
